@@ -57,6 +57,40 @@
 
 /* ===== LIGHT SOURCES CONFIG APP ===== */
 
+.tle-info-box {
+  background: rgba(100, 160, 255, 0.08);
+  border: 1px solid rgba(100, 160, 255, 0.25);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: var(--color-text-dark-secondary, #bbb);
+}
+
+.tle-info-box i.fa-lightbulb {
+  color: #ffd700;
+  margin-right: 4px;
+}
+
+.tle-help-icon {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 0.78em;
+  color: var(--color-text-dark-secondary, #888);
+  cursor: help;
+  opacity: 0.65;
+  transition: opacity 0.15s, color 0.15s;
+  vertical-align: middle;
+}
+
+.tle-help-icon:hover {
+  opacity: 1;
+  color: var(--color-text-hyperlink, #87ceeb);
+}
+
+
+
 .tle-config-form {
   padding: 8px 12px 0;
 }

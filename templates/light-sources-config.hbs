@@ -1,5 +1,16 @@
 <form class="tle-config-form flexcol" autocomplete="off">
 
+  {{!-- Quick-start callout (always visible) --}}
+  <div class="tle-info-box">
+    <p>
+      <i class="fa-solid fa-lightbulb"></i>
+      <strong>How it works:</strong>
+      Right-click any token you own to see the lightbulb button in the HUD.
+      <strong>Left-click</strong> it to toggle the light on/off.
+      <strong>Right-click</strong> it to choose a different light source from the list below.
+    </p>
+  </div>
+
   {{!-- General Settings --}}
   <section class="tle-config-section">
     <h3 class="tle-section-title">General Settings</h3>
@@ -13,36 +24,41 @@
           {{/each}}
         </select>
       </div>
-      <p class="hint">The light source pre-selected when a player first opens the light menu on a token.</p>
+      {{!-- <p class="hint">The preset that activates when a player first toggles light on a token with no prior selection.</p> --}}
     </div>
 
     <div class="form-group">
-      <label>Restrict by Item Tags</label>
+      <label>
+        Restrict by Item Tags
+        <i class="fa-solid fa-circle-info tle-help-icon"
+           data-tooltip="When enabled, non-GM players only see lights whose ID is tagged on one of their actor&apos;s items — giving you fine-grained control over which presets each player can access. GMs always see every light.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Setup:&lt;/strong&gt; Open any item sheet &amp;rarr; find the &lt;em&gt;Light Source&lt;/em&gt; dropdown at the bottom &amp;rarr; assign it a preset ID from the list below. The actor must own that item for the player to see that light in the HUD menu."></i>
+      </label>
       <div class="form-fields">
         <input type="checkbox" name="restrictByItems" {{checked restrictByItems}}>
       </div>
-      <p class="hint">
-        When enabled, non-GM players only see light options whose ID matches an item
-        flag on the token's actor (set via each item's "Light Source" field).
-        GMs always see all lights.
-      </p>
+      {{!-- <p class="hint">Players only see lights tagged on their actor's items. Hover <i class="fa-solid fa-circle-info"></i> for setup details.</p> --}}
     </div>
 
     <div class="form-group">
-      <label>Only GM Can Edit Item Light Source</label>
+      <label>
+        Only GM Can Edit Item Light Source
+        <i class="fa-solid fa-circle-info tle-help-icon"
+           data-tooltip="When enabled, players can see the &lt;em&gt;Light Source&lt;/em&gt; field on item sheets but cannot change it — only GMs can assign or remove light-source tags from items.&lt;br&gt;&lt;br&gt;Pair this with &lt;em&gt;Restrict by Item Tags&lt;/em&gt; so the GM fully controls which lights each player can use, without players being able to tag their own items."></i>
+      </label>
       <div class="form-fields">
         <input type="checkbox" name="gmOnlyItemEdit" {{checked gmOnlyItemEdit}}>
       </div>
-      <p class="hint">
-        When enabled, the "Light Source" dropdown on item sheets is read-only for players.
-        Only GMs can assign a light source to an item.
-      </p>
+      {{!-- <p class="hint">Players can see item light-source assignments but cannot change them. Hover <i class="fa-solid fa-circle-info"></i> for details.</p> --}}
     </div>
   </section>
 
   {{!-- Light Sources List --}}
   <section class="tle-config-section">
-    <h3 class="tle-section-title">Light Sources</h3>
+    <h3 class="tle-section-title">
+      Light Sources
+      <i class="fa-solid fa-circle-info tle-help-icon"
+         data-tooltip="Each entry is a named light preset. The &lt;strong&gt;name is its ID&lt;/strong&gt; — it appears in the right-click HUD menu on tokens and in the &lt;em&gt;Light Source&lt;/em&gt; dropdown on item sheets, so choose a descriptive name.&lt;br&gt;&lt;br&gt;Drag the grip icon to reorder; the order here is the order players see in the menu.&lt;br&gt;The lock icon marks built-in presets — they can be duplicated but not edited or deleted."></i>
+    </h3>
 
     <ol class="tle-light-list">
       {{#each lightSources}}
@@ -56,21 +72,21 @@
           </span>
 
           <span class="tle-light-id">
-            {{#if this.builtin}}<i class="fa-solid fa-lock tle-builtin-icon" title="Built-in"></i>{{/if}}
+            {{#if this.builtin}}<i class="fa-solid fa-lock tle-builtin-icon" title="Built-in — duplicate to customise"></i>{{/if}}
             {{this.id}}
           </span>
 
           <span class="tle-light-actions">
             {{#unless this.builtin}}
-              <a class="tle-action-btn" data-action="edit-light" data-light-id="{{this.id}}" title="Edit Light">
+              <a class="tle-action-btn" data-action="edit-light" data-light-id="{{this.id}}" title="Edit light parameters (radius, color, animation…)">
                 <i class="fa-solid fa-pen-to-square"></i>
               </a>
             {{/unless}}
-            <a class="tle-action-btn" data-action="duplicate-light" data-light-id="{{this.id}}" title="Duplicate Light">
+            <a class="tle-action-btn" data-action="duplicate-light" data-light-id="{{this.id}}" title="Duplicate — creates an editable copy">
               <i class="fa-solid fa-copy"></i>
             </a>
             {{#unless this.builtin}}
-              <a class="tle-action-btn tle-btn-delete" data-action="delete-light" data-light-id="{{this.id}}" title="Delete Light">
+              <a class="tle-action-btn tle-btn-delete" data-action="delete-light" data-light-id="{{this.id}}" title="Delete this light source permanently">
                 <i class="fa-solid fa-trash"></i>
               </a>
             {{/unless}}
@@ -80,14 +96,16 @@
     </ol>
 
     <div class="tle-add-light-row">
-      <a class="tle-action-btn tle-btn-add" data-action="add-light" title="Add New Light">
+      <a class="tle-action-btn tle-btn-add" data-action="add-light" title="Create a new light source from scratch">
         <i class="fa-solid fa-plus"></i> Add New Light
       </a>
       <span class="tle-import-export">
-        <a class="tle-action-btn" data-action="import-lights" title="Import lights from a JSON file">
+        <a class="tle-action-btn" data-action="import-lights"
+           title="Import presets from a JSON file — choose Merge (add new) or Replace Custom (swap all non-built-in)">
           <i class="fa-solid fa-file-import"></i> Import
         </a>
-        <a class="tle-action-btn" data-action="export-lights" title="Export lights to a JSON file">
+        <a class="tle-action-btn" data-action="export-lights"
+           title="Export the full preset list to a JSON file you can share or back up">
           <i class="fa-solid fa-file-export"></i> Export
         </a>
       </span>

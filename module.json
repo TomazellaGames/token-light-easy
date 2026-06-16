@@ -2,7 +2,7 @@
   "id": "token-light-easy",
   "title": "Token Light Easy",
   "description": "Add a lightbulb button to the Token HUD for instant light toggle and preset selection. Supports configurable light sources, item-based player permissions, and import/export of light presets. Requires Foundry VTT v13 or later.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "GPL-3.0-or-later",
   "url": "https://github.com/TomazellaGames/token-light-easy",
   "manifest": "https://github.com/TomazellaGames/token-light-easy/releases/latest/download/module.json",

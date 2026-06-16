@@ -1,0 +1,293 @@
+/* ===== TOKEN HUD LIGHT BUTTON ===== */
+
+.tle-light-btn {
+  pointer-events: all !important;  /* override any parent pointer-events:none from the HUD layer */
+  opacity: 0.6;
+  transition: opacity 0.15s, color 0.15s, text-shadow 0.15s;
+  cursor: pointer;
+}
+
+.tle-light-btn:hover {
+  opacity: 1;
+}
+
+.tle-light-btn.active {
+  opacity: 1;
+  color: #ffd700;
+  text-shadow: 0 0 8px #ffd700, 0 0 20px rgba(255, 200, 0, 0.5);
+}
+
+/* ===== SIMPLE LIGHT FALLBACK MENU ===== */
+
+.tle-simple-light-menu {
+  position: fixed;
+  z-index: 10000;
+  background: var(--color-bg, #1a1a2e);
+  border: 1px solid var(--color-border-dark, #444);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  min-width: 160px;
+  overflow: hidden;
+}
+
+.tle-light-menu-item {
+  padding: 7px 12px;
+  cursor: pointer;
+  color: var(--color-text-primary, #ccc);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.1s;
+}
+
+.tle-light-menu-item:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.tle-light-menu-item.active {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.tle-light-menu-item i {
+  width: 14px;
+  text-align: center;
+}
+
+/* ===== LIGHT SOURCES CONFIG APP ===== */
+
+.tle-config-form {
+  padding: 8px 12px 0;
+}
+
+.tle-section-title {
+  border-bottom: 1px solid var(--color-border-light-tertiary, #555);
+  margin: 12px 0 8px;
+  padding-bottom: 4px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.tle-light-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color-border-light-tertiary, #555);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tle-light-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #444);
+  cursor: default;
+  transition: background 0.1s;
+}
+
+.tle-light-row:last-child {
+  border-bottom: none;
+}
+
+.tle-light-row:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.tle-light-row.tle-builtin {
+  background: rgba(0,0,0,0.15);
+}
+
+.tle-light-row.tle-dragging {
+  opacity: 0.4;
+}
+
+.tle-light-row.tle-drag-over {
+  background: rgba(100, 160, 255, 0.12);
+  border-top: 2px solid var(--color-border-highlight, #6699ff);
+}
+
+.tle-drag-handle {
+  color: var(--color-text-dark-secondary, #888);
+  cursor: grab;
+  flex-shrink: 0;
+  padding: 2px 4px;
+}
+
+.tle-drag-handle:active {
+  cursor: grabbing;
+}
+
+.tle-builtin-icon {
+  font-size: 0.75em;
+  color: var(--color-text-dark-secondary, #888);
+  margin-right: 4px;
+}
+
+.tle-light-id {
+  flex: 1;
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tle-light-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.tle-action-btn {
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 3px;
+  color: var(--color-text-dark-secondary, #aaa);
+  transition: color 0.15s, background 0.15s;
+  font-size: 0.9em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.tle-action-btn:hover {
+  color: var(--color-text-primary, #ddd);
+  background: rgba(255,255,255,0.08);
+}
+
+.tle-btn-delete:hover {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.12);
+}
+
+.tle-add-light-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.tle-import-export {
+  display: flex;
+  gap: 4px;
+}
+
+.tle-btn-add {
+  color: var(--color-text-hyperlink, #87ceeb);
+}
+
+.tle-btn-add:hover {
+  color: var(--color-text-primary, #ddd);
+}
+
+/* ===== LIGHT EDIT APP ===== */
+
+.tle-light-edit-form {
+  padding: 8px 12px 0;
+  gap: 6px;
+}
+
+.tle-fieldset {
+  border: 1px solid var(--color-border-light-tertiary, #555);
+  border-radius: 4px;
+  padding: 8px 10px 6px;
+  margin: 6px 0 0;
+}
+
+.tle-fieldset legend {
+  font-weight: bold;
+  font-size: 0.85em;
+  color: var(--color-text-dark-secondary, #aaa);
+  padding: 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tle-color-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tle-color-row input[type="color"] {
+  width: 36px;
+  height: 28px;
+  border: 1px solid var(--color-border-light-tertiary, #555);
+  border-radius: 3px;
+  padding: 2px;
+  cursor: pointer;
+  background: none;
+  flex-shrink: 0;
+}
+
+.tle-range-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tle-range-row input[type="range"] {
+  flex: 1;
+}
+
+.tle-range-value {
+  min-width: 36px;
+  text-align: right;
+  font-size: 0.85em;
+  color: var(--color-text-dark-secondary, #aaa);
+  font-family: monospace;
+}
+
+/* ===== ITEM SHEET LIGHT FIELD ===== */
+
+.tle-item-light-section {
+  margin-top: 8px;
+  border-top: 1px solid var(--color-border-light-tertiary, #555);
+  padding-top: 8px;
+}
+
+.tle-item-light-group .tle-item-light-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tle-item-light-select {
+  width: 100%;
+}
+
+/* ===== SHARED FOOTER ===== */
+
+.tle-light-edit-form .sheet-footer,
+.tle-config-form .sheet-footer {
+  display: flex;
+  gap: 8px;
+  padding: 10px 0 8px;
+  justify-content: flex-end;
+}
+
+.tle-btn-save {
+  background: rgba(99, 160, 99, 0.25);
+  border: 1px solid rgba(99, 160, 99, 0.5);
+}
+
+.tle-btn-save:hover {
+  background: rgba(99, 160, 99, 0.4);
+}
+
+.tle-btn-cancel {
+  background: rgba(160, 99, 99, 0.15);
+  border: 1px solid rgba(160, 99, 99, 0.4);
+}
+
+.tle-btn-cancel:hover {
+  background: rgba(160, 99, 99, 0.3);
+}
+
+.tle-config-section {
+  margin-bottom: 12px;
+}

@@ -1,0 +1,106 @@
+<form class="tle-config-form flexcol" autocomplete="off">
+
+  {{!-- General Settings --}}
+  <section class="tle-config-section">
+    <h3 class="tle-section-title">General Settings</h3>
+
+    <div class="form-group">
+      <label>Default Token Light</label>
+      <div class="form-fields">
+        <select name="defaultLight">
+          {{#each defaultLightOptions}}
+            <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <p class="hint">The light source pre-selected when a player first opens the light menu on a token.</p>
+    </div>
+
+    <div class="form-group">
+      <label>Restrict by Item Tags</label>
+      <div class="form-fields">
+        <input type="checkbox" name="restrictByItems" {{checked restrictByItems}}>
+      </div>
+      <p class="hint">
+        When enabled, non-GM players only see light options whose ID matches an item
+        flag on the token's actor (set via each item's "Light Source" field).
+        GMs always see all lights.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label>Only GM Can Edit Item Light Source</label>
+      <div class="form-fields">
+        <input type="checkbox" name="gmOnlyItemEdit" {{checked gmOnlyItemEdit}}>
+      </div>
+      <p class="hint">
+        When enabled, the "Light Source" dropdown on item sheets is read-only for players.
+        Only GMs can assign a light source to an item.
+      </p>
+    </div>
+  </section>
+
+  {{!-- Light Sources List --}}
+  <section class="tle-config-section">
+    <h3 class="tle-section-title">Light Sources</h3>
+
+    <ol class="tle-light-list">
+      {{#each lightSources}}
+        <li class="tle-light-row {{#if this.builtin}}tle-builtin{{/if}}"
+            data-index="{{@index}}"
+            data-light-id="{{this.id}}"
+            draggable="true">
+
+          <span class="tle-drag-handle" title="Drag to reorder">
+            <i class="fa-solid fa-grip-vertical"></i>
+          </span>
+
+          <span class="tle-light-id">
+            {{#if this.builtin}}<i class="fa-solid fa-lock tle-builtin-icon" title="Built-in"></i>{{/if}}
+            {{this.id}}
+          </span>
+
+          <span class="tle-light-actions">
+            {{#unless this.builtin}}
+              <a class="tle-action-btn" data-action="edit-light" data-light-id="{{this.id}}" title="Edit Light">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </a>
+            {{/unless}}
+            <a class="tle-action-btn" data-action="duplicate-light" data-light-id="{{this.id}}" title="Duplicate Light">
+              <i class="fa-solid fa-copy"></i>
+            </a>
+            {{#unless this.builtin}}
+              <a class="tle-action-btn tle-btn-delete" data-action="delete-light" data-light-id="{{this.id}}" title="Delete Light">
+                <i class="fa-solid fa-trash"></i>
+              </a>
+            {{/unless}}
+          </span>
+        </li>
+      {{/each}}
+    </ol>
+
+    <div class="tle-add-light-row">
+      <a class="tle-action-btn tle-btn-add" data-action="add-light" title="Add New Light">
+        <i class="fa-solid fa-plus"></i> Add New Light
+      </a>
+      <span class="tle-import-export">
+        <a class="tle-action-btn" data-action="import-lights" title="Import lights from a JSON file">
+          <i class="fa-solid fa-file-import"></i> Import
+        </a>
+        <a class="tle-action-btn" data-action="export-lights" title="Export lights to a JSON file">
+          <i class="fa-solid fa-file-export"></i> Export
+        </a>
+      </span>
+    </div>
+  </section>
+
+  <footer class="sheet-footer flexrow">
+    <button type="submit" class="tle-btn-save">
+      <i class="fa-solid fa-floppy-disk"></i> Save Settings
+    </button>
+    <button type="button" data-action="cancel">
+      <i class="fa-solid fa-xmark"></i> Cancel
+    </button>
+  </footer>
+
+</form>

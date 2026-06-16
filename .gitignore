@@ -1,0 +1,19 @@
+# Claude Code project settings
+.claude/
+
+# FoundryVTT — compiled compendium packs (LevelDB directories written by Foundry)
+packs/
+!packs/_source/
+
+# FoundryVTT — auto-generated pack index / lock files
+*.db
+*.db-journal
+
+# Node / build tooling (if added later)
+node_modules/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

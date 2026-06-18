@@ -85,13 +85,14 @@ export class LightSourcesConfig extends HandlebarsApplicationMixin(ApplicationV2
     },
     position: {
       width: 620,
+      height: 640,
     },
   };
 
   static PARTS = {
     config: {
       template: `modules/${MODULE_ID}/templates/light-sources-config.hbs`,
-      scrollable: ['.tle-light-list'],
+      scrollable: ['.tle-config-scroll-body'],
     },
   };
 

@@ -36,17 +36,18 @@ export class LightEditApp extends HandlebarsApplicationMixin(ApplicationV2) {
     classes: ['tle-light-edit', 'sheet'],
     window: {
       title: 'Token Light Easy – Edit Light Source',
-      resizable: false,
+      resizable: true,
     },
     position: {
       width: 540,
+      height: 620,
     },
   };
 
   static PARTS = {
     edit: {
       template: `modules/${MODULE_ID}/templates/light-edit-app.hbs`,
-      scrollable: [''],
+      scrollable: ['.tle-edit-scroll-body'],
     },
   };
 

@@ -57,6 +57,8 @@ The icon glows gold when a light is active.
 
 Open **Game Settings → Configure Settings → Module Settings** and click **Configure** next to **Token Light Easy** (GM only).
 
+The settings panel is resizable and scrollable — drag any edge or corner to adjust its size. The Save/Cancel buttons stay pinned at the bottom while the content above scrolls.
+
 The settings panel has three sections:
 
 **General Settings**
@@ -95,7 +97,7 @@ Each light source has a name (used as its ID) and the full set of lighting param
 | Animation | Type, Speed, Intensity, Reverse |
 | Advanced | Negative light, Priority |
 
-The light preview updates live in the editor. Click **Save** to apply, or **Cancel** to discard.
+The editor window is resizable and scrollable — drag any edge or corner to adjust its size. The Save/Cancel buttons stay pinned at the bottom while the parameter fields scroll above them. Click **Save** to apply, or **Cancel** to discard.
 
 > **Note:** Built-in light sources (Torch, Flashlight, Point Light) can be duplicated but not edited or deleted directly.
 
@@ -133,6 +135,17 @@ Imported lights are never marked as built-in, so they can be edited and deleted 
 | Torch | 3 | 6 | 360° | Torch (speed 5, intensity 5) |
 | Flashlight | 8 | 16 | 60° | None |
 | Point Light | 8 | 16 | 360° | None |
+
+---
+
+## Changelog
+
+### v1.0.2
+- Light Source Editor: scrollable content area with pinned Save/Cancel footer; window is now resizable
+- Configure window: scrollable content area with pinned Save/Cancel footer
+
+### v1.0.0
+- Initial release: Token HUD lightbulb button, built-in presets (Torch, Flashlight, Point Light), custom light sources, item-based player permissions, import/export
 
 ---
 
